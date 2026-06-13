@@ -17,7 +17,7 @@ function formatDateTime(iso: string) {
 }
 
 interface RequestTableProps {
-  title: string;
+  title?: string;
   rows: AdminRow[];
   showSchedule?: boolean;
   onStatusChange: (id: string, status: RequestStatus) => void;
@@ -38,11 +38,11 @@ export default function RequestTable({
 
   return (
     <section>
-      <div className="flex items-center justify-between gap-3">
-        <h2 className="text-lg font-bold text-gray-900">{title}</h2>
+      <div className={`flex items-center gap-3 ${title ? "justify-between" : "justify-end"}`}>
+        {title && <h2 className="text-lg font-bold text-gray-900">{title}</h2>}
         <button
           onClick={onExport}
-          className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 px-3 py-1.5 text-xs font-semibold text-gray-600 transition-colors hover:border-blue-600 hover:text-blue-600"
+          className="inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-gray-200 px-3 py-1.5 text-xs font-semibold text-gray-600 transition-colors hover:border-accent-600 hover:text-accent-600"
         >
           <Download className="h-3.5 w-3.5" />
           엑셀 다운로드
@@ -94,19 +94,19 @@ export default function RequestTable({
                       <div className="flex flex-wrap gap-1.5">
                         <button
                           onClick={() => onStatusChange(row.id, "진행중")}
-                          className="rounded-full border border-gray-200 px-2.5 py-1 text-xs font-medium text-gray-600 transition-colors hover:border-blue-600 hover:text-blue-600"
+                          className="cursor-pointer rounded-full border border-gray-200 px-2.5 py-1 text-xs font-medium text-gray-600 transition-colors hover:border-accent-600 hover:text-accent-600"
                         >
                           진행중
                         </button>
                         <button
                           onClick={() => onStatusChange(row.id, "완료")}
-                          className="rounded-full border border-gray-200 px-2.5 py-1 text-xs font-medium text-gray-600 transition-colors hover:border-blue-600 hover:text-blue-600"
+                          className="cursor-pointer rounded-full border border-gray-200 px-2.5 py-1 text-xs font-medium text-gray-600 transition-colors hover:border-accent-600 hover:text-accent-600"
                         >
                           완료
                         </button>
                         <button
                           onClick={() => onDelete(row.id)}
-                          className="rounded-full border border-gray-200 px-2.5 py-1 text-xs font-medium text-red-500 transition-colors hover:border-red-500"
+                          className="cursor-pointer rounded-full border border-gray-200 px-2.5 py-1 text-xs font-medium text-red-500 transition-colors hover:border-red-500"
                         >
                           삭제
                         </button>
@@ -115,7 +115,7 @@ export default function RequestTable({
                     <td className="px-4 py-3 text-right">
                       <button
                         onClick={() => setExpandedId(expanded ? null : row.id)}
-                        className="text-gray-400 transition-colors hover:text-gray-600"
+                        className="cursor-pointer text-gray-400 transition-colors hover:text-gray-600"
                       >
                         {expanded ? (
                           <ChevronUp className="h-4 w-4" />

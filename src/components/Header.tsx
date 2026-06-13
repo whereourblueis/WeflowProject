@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const NAV_ITEMS = [
@@ -13,20 +14,45 @@ const NAV_ITEMS = [
   { href: "/diagnosis", label: "무료진단받기" },
 ];
 
+const RESETTABLE_PATHS = new Set(["/reservation", "/diagnosis"]);
+
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  const handleNavClick =
+    (href: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (pathname === href && RESETTABLE_PATHS.has(href)) {
+        e.preventDefault();
+        window.location.href = href;
+      }
+    };
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white/90 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tight text-accent-600">
-          <Image src="/logo.png" alt="WEFLOW" width={32} height={32} className="h-8 w-8" />
+        <Link
+          href="/"
+          className="flex items-center gap-2 text-xl font-bold tracking-tight text-accent-600"
+        >
+          <Image
+            src="/logo.png"
+            alt="WEFLOW"
+            width={32}
+            height={32}
+            className="h-8 w-8"
+          />
           WEFLOW
         </Link>
 
         <nav className="hidden items-center gap-6 text-sm font-medium text-gray-700 md:flex">
           {NAV_ITEMS.map((item) => (
-            <Link key={item.href} href={item.href} className="hover:text-accent-600">
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={handleNavClick(item.href)}
+              className="hover:text-accent-600"
+            >
               {item.label}
             </Link>
           ))}
@@ -55,7 +81,10 @@ export default function Header() {
                 <Link
                   href={item.href}
                   className="block rounded-md px-2 py-2 hover:bg-accent-50 hover:text-accent-600"
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => {
+                    setOpen(false);
+                    handleNavClick(item.href)(e);
+                  }}
                 >
                   {item.label}
                 </Link>

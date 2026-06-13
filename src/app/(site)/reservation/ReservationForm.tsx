@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useState } from "react";
+import Link from "next/link";
 import { useFormStatus } from "react-dom";
 import { createReservation, type ReservationFormState } from "./actions";
 import { BUILD_TYPE_OPTIONS, generateTimeSlots } from "@/lib/data/forms";
@@ -35,6 +36,11 @@ function SubmitButton() {
 }
 
 export default function ReservationForm() {
+  const [resetKey, setResetKey] = useState(0);
+  return <ReservationFormFields key={resetKey} onReset={() => setResetKey((key) => key + 1)} />;
+}
+
+function ReservationFormFields({ onReset }: { onReset: () => void }) {
   const [state, formAction] = useActionState(createReservation, initialState);
   const [now] = useState(() => new Date());
   const today = toDateString(now);
@@ -50,6 +56,21 @@ export default function ReservationForm() {
     return (
       <div className="rounded-2xl border border-accent-100 bg-accent-50 p-8 text-center">
         <p className="text-lg font-semibold text-accent-700">{state.message}</p>
+        <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <Link
+            href="/"
+            className="cursor-pointer rounded-full bg-accent-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-600/30 transition-colors hover:bg-accent-700 sm:text-base"
+          >
+            메인으로
+          </Link>
+          <button
+            type="button"
+            onClick={onReset}
+            className="cursor-pointer rounded-full border border-accent-600 px-6 py-3 text-sm font-semibold text-accent-600 transition-colors hover:bg-accent-50 sm:text-base"
+          >
+            다시 예약하기
+          </button>
+        </div>
       </div>
     );
   }

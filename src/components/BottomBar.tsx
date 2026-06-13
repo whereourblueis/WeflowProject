@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Phone, MessageCircle, Newspaper, ClipboardCheck } from "lucide-react";
 
 const ITEMS = [
@@ -19,6 +22,8 @@ const ITEMS = [
 ];
 
 export default function BottomBar() {
+  const pathname = usePathname();
+
   return (
     <nav className="fixed inset-x-0 bottom-0 z-50 grid h-16 grid-cols-4 border-t border-border bg-white shadow-[0_-2px_8px_rgba(0,0,0,0.06)]">
       {ITEMS.map(({ href, label, icon: Icon, external }) =>
@@ -37,6 +42,12 @@ export default function BottomBar() {
           <Link
             key={label}
             href={href}
+            onClick={(e) => {
+              if (pathname === href && href === "/diagnosis") {
+                e.preventDefault();
+                window.location.href = href;
+              }
+            }}
             className="flex flex-col items-center justify-center gap-0.5 text-xs font-medium text-gray-600 transition-colors hover:text-accent-600"
           >
             <Icon className="h-5 w-5" />

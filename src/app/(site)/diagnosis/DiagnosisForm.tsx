@@ -1,6 +1,7 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
+import Link from "next/link";
 import { useFormStatus } from "react-dom";
 import { createInquiry, type InquiryFormState } from "./actions";
 import { BUILD_TYPE_OPTIONS } from "@/lib/data/forms";
@@ -22,12 +23,32 @@ function SubmitButton() {
 }
 
 export default function DiagnosisForm() {
+  const [resetKey, setResetKey] = useState(0);
+  return <DiagnosisFormFields key={resetKey} onReset={() => setResetKey((key) => key + 1)} />;
+}
+
+function DiagnosisFormFields({ onReset }: { onReset: () => void }) {
   const [state, formAction] = useActionState(createInquiry, initialState);
 
   if (state.status === "success") {
     return (
       <div className="rounded-2xl border border-accent-100 bg-accent-50 p-8 text-center">
         <p className="text-lg font-semibold text-accent-700">{state.message}</p>
+        <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <Link
+            href="/"
+            className="cursor-pointer rounded-full bg-accent-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-600/30 transition-colors hover:bg-accent-700 sm:text-base"
+          >
+            메인으로
+          </Link>
+          <button
+            type="button"
+            onClick={onReset}
+            className="cursor-pointer rounded-full border border-accent-600 px-6 py-3 text-sm font-semibold text-accent-600 transition-colors hover:bg-accent-50 sm:text-base"
+          >
+            다시 신청하기
+          </button>
+        </div>
       </div>
     );
   }
