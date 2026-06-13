@@ -26,10 +26,10 @@ const CONTACT_LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-200 bg-gray-50 px-4 pb-20 pt-12 text-sm text-gray-600">
+    <footer className="border-t border-border bg-accent-50 px-4 pb-20 pt-12 text-sm text-gray-600">
       <div className="mx-auto grid max-w-6xl gap-10 sm:grid-cols-2 md:grid-cols-4">
         <div className="sm:col-span-2 md:col-span-1">
-          <p className="text-lg font-bold text-blue-600">WEFLOW</p>
+          <p className="text-lg font-bold text-accent-600">WEFLOW</p>
           <p className="mt-3 leading-relaxed">
             제작부터 관리까지
             <br />
@@ -70,7 +70,7 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <p className="font-semibold text-gray-900">{title}</p>
+      <p className="font-semibold text-foreground">{title}</p>
       <ul className="mt-3 space-y-2">
         {links.map((link) => (
           <li key={link.label}>
@@ -79,12 +79,12 @@ function FooterColumn({
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-blue-600"
+                className="hover:text-accent-600"
               >
                 {link.label}
               </a>
             ) : (
-              <Link href={link.href} className="hover:text-blue-600">
+              <Link href={link.href} className="hover:text-accent-600">
                 {link.label}
               </Link>
             )}

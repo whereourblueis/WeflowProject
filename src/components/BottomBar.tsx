@@ -20,7 +20,7 @@ const ITEMS = [
 
 export default function BottomBar() {
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-50 grid h-16 grid-cols-4 border-t border-gray-200 bg-white shadow-[0_-2px_8px_rgba(0,0,0,0.06)]">
+    <nav className="fixed inset-x-0 bottom-0 z-50 grid h-16 grid-cols-4 border-t border-border bg-white shadow-[0_-2px_8px_rgba(0,0,0,0.06)]">
       {ITEMS.map(({ href, label, icon: Icon, external }) =>
         external ? (
           <a
@@ -28,7 +28,7 @@ export default function BottomBar() {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col items-center justify-center gap-0.5 text-xs font-medium text-gray-600 transition-colors hover:text-blue-600"
+            className="flex flex-col items-center justify-center gap-0.5 text-xs font-medium text-gray-600 transition-colors hover:text-accent-600"
           >
             <Icon className="h-5 w-5" />
             {label}
@@ -37,7 +37,7 @@ export default function BottomBar() {
           <Link
             key={label}
             href={href}
-            className="flex flex-col items-center justify-center gap-0.5 text-xs font-medium text-gray-600 transition-colors hover:text-blue-600"
+            className="flex flex-col items-center justify-center gap-0.5 text-xs font-medium text-gray-600 transition-colors hover:text-accent-600"
           >
             <Icon className="h-5 w-5" />
             {label}

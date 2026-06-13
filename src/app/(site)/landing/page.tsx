@@ -49,7 +49,7 @@ export default function LandingPage() {
     <div className="mx-auto max-w-6xl px-4 py-12 lg:grid lg:grid-cols-3 lg:items-start lg:gap-8">
       <div className="lg:col-span-2">
         <section className="text-center lg:text-left">
-          <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-4xl">
+          <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-foreground sm:text-4xl">
             문의로 이어지는
             <br />
             홈페이지를 만듭니다
@@ -60,13 +60,13 @@ export default function LandingPage() {
           <div className="mt-6 flex flex-wrap justify-center gap-3 lg:justify-start">
             <a
               href="#inquiry-form"
-              className="rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-600/30 transition-colors hover:bg-blue-700 sm:text-base"
+              className="rounded-full bg-accent-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-600/30 transition-colors hover:bg-accent-700 sm:text-base"
             >
               무료 진단 후 견적받기 →
             </a>
             <a
               href="#inquiry-form"
-              className="rounded-full border border-blue-600 px-6 py-3 text-sm font-semibold text-blue-600 transition-colors hover:bg-blue-50 sm:text-base"
+              className="rounded-full border border-accent-600 px-6 py-3 text-sm font-semibold text-accent-600 transition-colors hover:bg-accent-50 sm:text-base"
             >
               실제 제작 성공 보기 →
             </a>
@@ -74,17 +74,17 @@ export default function LandingPage() {
         </section>
 
         <section className="mt-16">
-          <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">WEFLOW CARE PLAN</h2>
+          <h2 className="text-2xl font-bold text-foreground sm:text-3xl">WEFLOW CARE PLAN</h2>
           <p className="mt-2 text-sm text-gray-500">제작부터 운영 · 광고 · 관리까지 한 번에</p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             {FEATURES.map(({ icon: Icon, title, lines }) => (
               <div
                 key={title}
-                className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
+                className="rounded-2xl border border-border bg-white p-6 shadow-card"
               >
-                <Icon className="h-6 w-6 text-blue-600" />
-                <h3 className="mt-3 text-lg font-bold text-gray-900">{title}</h3>
+                <Icon className="h-6 w-6 text-accent-600" />
+                <h3 className="mt-3 text-lg font-bold text-foreground">{title}</h3>
                 {lines.map((line) => (
                   <p key={line} className="mt-1 text-sm text-gray-500">
                     {line}
@@ -94,13 +94,13 @@ export default function LandingPage() {
             ))}
           </div>
 
-          <div className="mt-4 rounded-2xl border border-blue-100 bg-blue-50 p-6 sm:p-8">
-            <Megaphone className="h-6 w-6 text-blue-600" />
-            <h3 className="mt-3 text-lg font-bold text-gray-900">광고 연동 지원</h3>
+          <div className="mt-4 rounded-2xl border border-accent-100 bg-accent-50 p-6 sm:p-8">
+            <Megaphone className="h-6 w-6 text-accent-600" />
+            <h3 className="mt-3 text-lg font-bold text-foreground">광고 연동 지원</h3>
             <p className="mt-1 text-sm text-gray-600">
               홈페이지 + 랜딩페이지 + 광고 한 번에 연결하여 문의가 들어오는 구조를 만듭니다.
             </p>
-            <p className="mt-3 text-xs font-medium text-blue-600">
+            <p className="mt-3 text-xs font-medium text-accent-600">
               인스타, 스레드, 블로그, 카카오톡, 당근 플레이스 등
             </p>
             <p className="mt-4 text-sm leading-relaxed text-gray-600">
@@ -110,7 +110,7 @@ export default function LandingPage() {
               <br />
               어디에 맡길지, 광고는 어떻게 해야 할지 고민되셨나요?
             </p>
-            <p className="mt-4 text-sm font-semibold text-gray-900">
+            <p className="mt-4 text-sm font-semibold text-foreground">
               WEFLOW는 랜딩페이지 + 홈페이지 + 광고 + 사후관리까지 저렴한 비용과 높은 퀄리티로 한
               번에 해결합니다.
             </p>
@@ -120,7 +120,7 @@ export default function LandingPage() {
                   key={item}
                   className="flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-xs font-medium text-gray-700"
                 >
-                  <Check className="h-3.5 w-3.5 shrink-0 text-blue-600" />
+                  <Check className="h-3.5 w-3.5 shrink-0 text-accent-600" />
                   {item}
                 </div>
               ))}
@@ -129,44 +129,44 @@ export default function LandingPage() {
         </section>
 
         <section className="mt-16">
-          <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">제작플랜&가격안내</h2>
+          <h2 className="text-2xl font-bold text-foreground sm:text-3xl">제작플랜&가격안내</h2>
           <div className="mt-8">
             <PricingCardGrid cards={ALL_PRICING} />
           </div>
         </section>
 
         <section className="mt-16">
-          <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">제작진행과정</h2>
+          <h2 className="text-2xl font-bold text-foreground sm:text-3xl">제작진행과정</h2>
           <div className="mt-8">
             <ProcessSteps variant="cards" />
           </div>
         </section>
 
-        <section className="mt-16 rounded-2xl bg-gray-50 p-8 text-center sm:p-12">
-          <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">
+        <section className="mt-16 rounded-2xl bg-accent-50 p-8 text-center sm:p-12">
+          <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
             무료진단에서 이런 걸 확인해드립니다
           </h2>
           <div className="mx-auto mt-6 grid max-w-2xl grid-cols-2 gap-3 sm:grid-cols-4">
             {DIAGNOSIS_CHECKLIST.map((item) => (
               <div
                 key={item}
-                className="flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-3 text-sm font-medium text-gray-700"
+                className="flex items-center justify-center gap-2 rounded-xl border border-border bg-white px-3 py-3 text-sm font-medium text-gray-700"
               >
-                <Check className="h-4 w-4 shrink-0 text-blue-600" />
+                <Check className="h-4 w-4 shrink-0 text-accent-600" />
                 {item}
               </div>
             ))}
           </div>
           <a
             href="#inquiry-form"
-            className="mt-8 inline-flex items-center gap-1 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-600/30 transition-colors hover:bg-blue-700 sm:text-base"
+            className="mt-8 inline-flex items-center gap-1 rounded-full bg-accent-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-600/30 transition-colors hover:bg-accent-700 sm:text-base"
           >
             무료진단 후 견적받기 <ArrowRight className="h-4 w-4" />
           </a>
         </section>
 
         <section className="mt-16">
-          <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">고객 후기</h2>
+          <h2 className="text-2xl font-bold text-foreground sm:text-3xl">고객 후기</h2>
           <div className="mt-6">
             <ReviewMarquee />
           </div>
@@ -174,8 +174,8 @@ export default function LandingPage() {
       </div>
 
       <aside id="inquiry-form" className="mt-16 scroll-mt-24 lg:mt-0">
-        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm lg:sticky lg:top-24">
-          <h2 className="text-lg font-bold text-gray-900">무료진단 받기</h2>
+        <div className="rounded-2xl border border-border bg-white p-6 shadow-card lg:sticky lg:top-24">
+          <h2 className="text-lg font-bold text-foreground">무료진단 받기</h2>
           <p className="mt-1 text-sm text-gray-500">
             정보를 남겨주시면 빠르게 견적을 안내해드립니다.
           </p>

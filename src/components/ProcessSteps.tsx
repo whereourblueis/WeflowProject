@@ -11,10 +11,10 @@ export default function ProcessSteps({
         {PROCESS_STEPS.map((s) => (
           <div
             key={s.step}
-            className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm"
+            className="rounded-xl border border-border bg-white p-5 shadow-card"
           >
-            <p className="text-sm font-bold text-blue-600">{s.step}</p>
-            <p className="mt-1 font-semibold text-gray-900">{s.title}</p>
+            <p className="text-sm font-bold text-accent-600">{s.step}</p>
+            <p className="mt-1 font-semibold text-foreground">{s.title}</p>
             <p className="mt-1 text-sm text-gray-500">{s.desc}</p>
           </div>
         ))}
@@ -23,11 +23,11 @@ export default function ProcessSteps({
   }
 
   return (
-    <div className="flex h-full flex-col divide-y divide-gray-100 rounded-2xl border border-gray-200 bg-white">
+    <div className="flex h-full flex-col divide-y divide-border rounded-2xl border border-border bg-white">
       {PROCESS_STEPS.map((s) => (
         <div key={s.step} className="flex items-center gap-4 px-5 py-4">
-          <span className="text-sm font-bold text-blue-600">{s.step}</span>
-          <span className="font-medium text-gray-900">{s.title}</span>
+          <span className="text-sm font-bold text-accent-600">{s.step}</span>
+          <span className="font-medium text-foreground">{s.title}</span>
         </div>
       ))}
     </div>

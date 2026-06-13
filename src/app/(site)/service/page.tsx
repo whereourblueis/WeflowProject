@@ -11,7 +11,7 @@ export default function ServicePage() {
   return (
     <div>
       <section className="mx-auto max-w-6xl px-4 py-16">
-        <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">제작진행과정</h1>
+        <h1 className="text-2xl font-bold text-foreground sm:text-3xl">제작진행과정</h1>
         <p className="mt-2 text-sm text-gray-500">
           상담부터 광고운영 · 사후관리까지, WEFLOW만의 6단계 프로세스로 진행됩니다.
         </p>
@@ -21,7 +21,7 @@ export default function ServicePage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-16">
-        <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">
+        <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
           광고 운영 · 사후관리 시스템
         </h2>
         <p className="mt-2 text-sm text-gray-500">
@@ -31,9 +31,9 @@ export default function ServicePage() {
           {AD_OPS_ITEMS.map((item) => (
             <div
               key={item}
-              className="flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-4 text-sm font-medium text-gray-700 shadow-sm"
+              className="flex items-center gap-2 rounded-xl border border-border bg-white px-4 py-4 text-sm font-medium text-gray-700 shadow-card"
             >
-              <CheckCircle2 className="h-4 w-4 shrink-0 text-blue-600" />
+              <CheckCircle2 className="h-4 w-4 shrink-0 text-accent-600" />
               {item}
             </div>
           ))}

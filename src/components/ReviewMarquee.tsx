@@ -7,7 +7,7 @@ const ROW_2 = REVIEWS.slice(MID);
 
 function ReviewCard({ review }: { review: Review }) {
   return (
-    <div className="flex w-72 shrink-0 flex-col gap-2 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+    <div className="flex w-72 shrink-0 flex-col gap-2 rounded-xl border border-border bg-white p-4 shadow-card">
       <div className="flex items-center gap-1 text-amber-400">
         {Array.from({ length: 5 }).map((_, i) => (
           <Star key={i} className="h-4 w-4 fill-current" />

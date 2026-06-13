@@ -14,7 +14,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="w-full rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-600/30 transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60 sm:text-base"
+      className="w-full rounded-full bg-accent-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-600/30 transition-colors hover:bg-accent-700 disabled:cursor-not-allowed disabled:opacity-60 sm:text-base"
     >
       {pending ? "전송 중..." : "무료진단 후 견적받기"}
     </button>
@@ -26,8 +26,8 @@ export default function DiagnosisForm() {
 
   if (state.status === "success") {
     return (
-      <div className="rounded-2xl border border-blue-200 bg-blue-50 p-8 text-center">
-        <p className="text-lg font-semibold text-blue-700">{state.message}</p>
+      <div className="rounded-2xl border border-accent-100 bg-accent-50 p-8 text-center">
+        <p className="text-lg font-semibold text-accent-700">{state.message}</p>
       </div>
     );
   }
@@ -89,7 +89,7 @@ export default function DiagnosisForm() {
           type="checkbox"
           name="consent"
           required
-          className="mt-0.5 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600"
+          className="mt-0.5 h-4 w-4 rounded border-gray-300 text-accent-600 focus:ring-accent-600"
         />
         개인정보 수집 및 상담 동의
       </label>

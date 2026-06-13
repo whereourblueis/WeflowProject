@@ -27,7 +27,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="w-full rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-600/30 transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60 sm:text-base"
+      className="w-full rounded-full bg-accent-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-600/30 transition-colors hover:bg-accent-700 disabled:cursor-not-allowed disabled:opacity-60 sm:text-base"
     >
       {pending ? "전송 중..." : "예약 신청하기"}
     </button>
@@ -48,8 +48,8 @@ export default function ReservationForm() {
 
   if (state.status === "success") {
     return (
-      <div className="rounded-2xl border border-blue-200 bg-blue-50 p-8 text-center">
-        <p className="text-lg font-semibold text-blue-700">{state.message}</p>
+      <div className="rounded-2xl border border-accent-100 bg-accent-50 p-8 text-center">
+        <p className="text-lg font-semibold text-accent-700">{state.message}</p>
       </div>
     );
   }
@@ -87,10 +87,10 @@ export default function ReservationForm() {
                 }}
                 className={`rounded-lg border px-2 py-2 text-sm font-medium transition-colors ${
                   selected
-                    ? "border-blue-600 bg-blue-600 text-white"
+                    ? "border-accent-600 bg-accent-600 text-white"
                     : disabled
                       ? "cursor-not-allowed border-gray-100 bg-gray-50 text-gray-300"
-                      : "border-gray-200 bg-white text-gray-700 hover:border-blue-600 hover:text-blue-600"
+                      : "border-border bg-white text-gray-700 hover:border-accent-600 hover:text-accent-600"
                 }`}
               >
                 {slot}
@@ -172,7 +172,7 @@ export default function ReservationForm() {
           type="checkbox"
           name="consent"
           required
-          className="mt-0.5 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600"
+          className="mt-0.5 h-4 w-4 rounded border-gray-300 text-accent-600 focus:ring-accent-600"
         />
         개인정보 수집 및 상담 동의
       </label>

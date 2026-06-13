@@ -1,5 +1,5 @@
 export const inputClass =
-  "mt-1.5 w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600";
+  "mt-1.5 w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-foreground placeholder:text-gray-400 focus:border-accent-600 focus:outline-none focus:ring-1 focus:ring-accent-600";
 
 export function FieldLabel({
   children,
@@ -9,9 +9,9 @@ export function FieldLabel({
   required?: boolean;
 }) {
   return (
-    <label className="block text-sm font-medium text-gray-900">
+    <label className="block text-sm font-medium text-foreground">
       {children}
-      {required && <span className="ml-0.5 text-blue-600">*</span>}
+      {required && <span className="ml-0.5 text-accent-600">*</span>}
     </label>
   );
 }
