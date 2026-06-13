@@ -4,7 +4,7 @@ import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { createInquiry, type InquiryFormState } from "./actions";
 import { BUILD_TYPE_OPTIONS } from "@/lib/data/forms";
-import { FieldLabel, inputClass } from "@/components/form/fields";
+import { FieldLabel, clearFormValidity, handleFormInvalid, inputClass } from "@/components/form/fields";
 
 const initialState: InquiryFormState = { status: "idle" };
 
@@ -33,7 +33,13 @@ export default function DiagnosisForm() {
   }
 
   return (
-    <form action={formAction} className="space-y-5">
+    <form
+      action={formAction}
+      onInvalidCapture={handleFormInvalid}
+      onInputCapture={clearFormValidity}
+      onChangeCapture={clearFormValidity}
+      className="space-y-5"
+    >
       <div>
         <FieldLabel required>이름</FieldLabel>
         <input name="name" type="text" required className={inputClass} placeholder="홍길동" />

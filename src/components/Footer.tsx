@@ -1,4 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
+import type { ComponentType } from "react";
+import { Phone, Mail } from "lucide-react";
+import { SiKakaotalk, SiNaver, SiInstagram, SiFacebook } from "react-icons/si";
 
 const SERVICE_LINKS = [
   { href: "/service", label: "홈페이지 제작 과정" },
@@ -13,14 +17,31 @@ const CARE_LINKS = [
 ];
 
 const CONTACT_LINKS = [
-  { href: "tel:010-2971-7280", label: "전화문의" },
-  { href: "mailto:contact@weflowlab.kr", label: "이메일 문의" },
-  { href: "http://pf.kakao.com/_xntCbX", label: "카카오 채널 문의" },
-  { href: "https://m.blog.naver.com/weflowlab", label: "블로그 문의" },
-  { href: "https://www.instagram.com/weflowlab.kr", label: "인스타 문의" },
+  { href: "tel:010-2971-7280", label: "전화문의", icon: Phone },
+  { href: "mailto:contact@weflowlab.kr", label: "이메일 문의", icon: Mail },
+  {
+    href: "http://pf.kakao.com/_xntCbX",
+    label: "카카오 채널 문의",
+    icon: SiKakaotalk,
+    color: "#FFCD00",
+  },
+  {
+    href: "https://m.blog.naver.com/weflowlab",
+    label: "블로그 문의",
+    icon: SiNaver,
+    color: "#03C75A",
+  },
+  {
+    href: "https://www.instagram.com/weflowlab.kr",
+    label: "인스타 문의",
+    icon: SiInstagram,
+    color: "#E4405F",
+  },
   {
     href: "https://www.facebook.com/profile.php?id=61590187124682",
     label: "페이스북 문의",
+    icon: SiFacebook,
+    color: "#1877F2",
   },
 ];
 
@@ -29,7 +50,10 @@ export default function Footer() {
     <footer className="border-t border-border bg-accent-50 px-4 pb-20 pt-12 text-sm text-gray-600">
       <div className="mx-auto grid max-w-6xl gap-10 sm:grid-cols-2 md:grid-cols-4">
         <div className="sm:col-span-2 md:col-span-1">
-          <p className="text-lg font-bold text-accent-600">WEFLOW</p>
+          <p className="flex items-center gap-2 text-lg font-bold text-accent-600">
+            <Image src="/logo.png" alt="WEFLOW" width={32} height={32} className="h-8 w-8" />
+            WEFLOW
+          </p>
           <p className="mt-3 leading-relaxed">
             제작부터 관리까지
             <br />
@@ -45,6 +69,10 @@ export default function Footer() {
             <span>개인정보처리방침</span>
             <span>|</span>
             <span>이용약관</span>
+            <span>|</span>
+            <Link href="/admin/login" className="hover:text-accent-600">
+              관리자
+            </Link>
           </div>
           <p className="mt-4 text-xs text-gray-400">
             © 2026 WEFLOW. All rights reserved.
@@ -65,31 +93,44 @@ function FooterColumn({
   external,
 }: {
   title: string;
-  links: { href: string; label: string }[];
+  links: {
+    href: string;
+    label: string;
+    icon?: ComponentType<{ className?: string; style?: { color?: string } }>;
+    color?: string;
+  }[];
   external?: boolean;
 }) {
   return (
     <div>
       <p className="font-semibold text-foreground">{title}</p>
       <ul className="mt-3 space-y-2">
-        {links.map((link) => (
-          <li key={link.label}>
-            {external ? (
-              <a
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-accent-600"
-              >
-                {link.label}
-              </a>
-            ) : (
-              <Link href={link.href} className="hover:text-accent-600">
-                {link.label}
-              </Link>
-            )}
-          </li>
-        ))}
+        {links.map(({ href, label, icon: Icon, color }) => {
+          const content = (
+            <>
+              {Icon && <Icon className="h-4 w-4" style={{ color }} />}
+              {label}
+            </>
+          );
+          return (
+            <li key={label}>
+              {external ? (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:text-accent-600"
+                >
+                  {content}
+                </a>
+              ) : (
+                <Link href={href} className="flex items-center gap-2 hover:text-accent-600">
+                  {content}
+                </Link>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

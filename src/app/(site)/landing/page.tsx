@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Rocket, Wallet, Headset, LifeBuoy, Megaphone, Check, ArrowRight } from "lucide-react";
 import DiagnosisForm from "../diagnosis/DiagnosisForm";
 import ProcessSteps from "@/components/ProcessSteps";
@@ -42,13 +43,11 @@ const AD_CHECKLIST = [
 
 const DIAGNOSIS_CHECKLIST = ["문의 구조 진단", "디자인 점검", "검색 노출 분석", "문의 개선 제안"];
 
-const ALL_PRICING = [...BUILD_PLANS, ...CARE_PLANS, ...AD_PLANS];
-
 export default function LandingPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 lg:grid lg:grid-cols-3 lg:items-start lg:gap-8">
+    <div className="mx-auto max-w-6xl px-4 py-12 lg:grid lg:grid-cols-3 lg:gap-8">
       <div className="lg:col-span-2">
-        <section className="text-center lg:text-left">
+        <section className="rounded-2xl bg-gradient-to-b from-accent-50 to-background p-8 text-center sm:p-12 lg:text-left">
           <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-foreground sm:text-4xl">
             문의로 이어지는
             <br />
@@ -58,18 +57,18 @@ export default function LandingPage() {
             기획부터 제작, 광고 연동, 운영 관리까지 WEFLOW가 함께합니다.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3 lg:justify-start">
-            <a
-              href="#inquiry-form"
+            <Link
+              href="/diagnosis"
               className="rounded-full bg-accent-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-600/30 transition-colors hover:bg-accent-700 sm:text-base"
             >
               무료 진단 후 견적받기 →
-            </a>
-            <a
-              href="#inquiry-form"
+            </Link>
+            <Link
+              href="/cases"
               className="rounded-full border border-accent-600 px-6 py-3 text-sm font-semibold text-accent-600 transition-colors hover:bg-accent-50 sm:text-base"
             >
               실제 제작 성공 보기 →
-            </a>
+            </Link>
           </div>
         </section>
 
@@ -130,8 +129,28 @@ export default function LandingPage() {
 
         <section className="mt-16">
           <h2 className="text-2xl font-bold text-foreground sm:text-3xl">제작플랜&가격안내</h2>
+
           <div className="mt-8">
-            <PricingCardGrid cards={ALL_PRICING} />
+            <h3 className="text-xl font-bold text-foreground sm:text-2xl">WEFLOW 제작 플랜</h3>
+            <p className="mt-1 text-sm text-gray-500">필수 선택형 (3중 택1)</p>
+            <div className="mt-6">
+              <PricingCardGrid cards={BUILD_PLANS} />
+            </div>
+          </div>
+
+          <div className="mt-12">
+            <h3 className="text-xl font-bold text-foreground sm:text-2xl">WEFLOW 케어 플랜</h3>
+            <p className="mt-1 text-sm text-gray-500">필수 선택형 (3중 택1)</p>
+            <div className="mt-6">
+              <PricingCardGrid cards={CARE_PLANS} />
+            </div>
+          </div>
+
+          <div className="mt-12">
+            <h3 className="text-xl font-bold text-foreground sm:text-2xl">WEFLOW 광고 세팅</h3>
+            <div className="mt-6">
+              <PricingCardGrid cards={AD_PLANS} />
+            </div>
           </div>
         </section>
 
@@ -157,12 +176,12 @@ export default function LandingPage() {
               </div>
             ))}
           </div>
-          <a
-            href="#inquiry-form"
+          <Link
+            href="/diagnosis"
             className="mt-8 inline-flex items-center gap-1 rounded-full bg-accent-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-600/30 transition-colors hover:bg-accent-700 sm:text-base"
           >
             무료진단 후 견적받기 <ArrowRight className="h-4 w-4" />
-          </a>
+          </Link>
         </section>
 
         <section className="mt-16">
@@ -173,7 +192,7 @@ export default function LandingPage() {
         </section>
       </div>
 
-      <aside id="inquiry-form" className="mt-16 scroll-mt-24 lg:mt-0">
+      <aside className="mt-16 lg:mt-0">
         <div className="rounded-2xl border border-border bg-white p-6 shadow-card lg:sticky lg:top-24">
           <h2 className="text-lg font-bold text-foreground">무료진단 받기</h2>
           <p className="mt-1 text-sm text-gray-500">

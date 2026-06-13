@@ -18,7 +18,7 @@ export default function CarePlanGrid() {
           className="flex flex-col items-center gap-2 rounded-xl border border-border bg-white px-3 py-6 text-center shadow-card"
         >
           <Icon className="h-6 w-6 text-accent-600" />
-          <p className="text-sm font-semibold text-foreground">{title}</p>
+          <p className="break-keep text-sm font-semibold text-foreground">{title}</p>
           {desc && <p className="text-xs text-gray-500">{desc}</p>}
         </div>
       ))}

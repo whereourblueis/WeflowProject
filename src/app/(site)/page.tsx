@@ -27,13 +27,13 @@ const HERO_BADGES = [
 
 export default function HomePage() {
   return (
-    <div>
+    <>
       <section className="bg-gradient-to-b from-accent-50 to-background px-4 py-16 text-center sm:py-24">
         <p className="text-sm font-medium text-accent-700 sm:text-base">
           랜딩&홈페이지 제작 · 광고 운영 · 검색 상단 노출 · 맞춤형 웹 솔루션
         </p>
 
-        <h1 className="mx-auto mt-4 max-w-2xl text-3xl font-extrabold leading-tight tracking-tight text-foreground sm:text-5xl">
+        <h1 className="mx-auto mt-4 max-w-2xl break-keep text-3xl font-extrabold leading-tight tracking-tight text-foreground sm:text-5xl">
           문의로 이어지는
           <br />
           홈페이지를 만듭니다
@@ -70,7 +70,7 @@ export default function HomePage() {
           {HERO_BADGES.map(({ icon: Icon, title, desc }) => (
             <div
               key={title}
-              className="flex w-40 flex-col items-center gap-2 rounded-xl border border-border bg-white px-4 py-5 shadow-card"
+              className="flex w-40 flex-col items-center gap-2 rounded-xl border border-border bg-white px-4 py-5 shadow-card transition-colors hover:border-accent-600"
             >
               <Icon className="h-6 w-6 text-accent-600" />
               <p className="text-sm font-semibold text-foreground">{title}</p>
@@ -131,6 +131,6 @@ export default function HomePage() {
         </div>
         <ReviewMarquee />
       </section>
-    </div>
+    </>
   );
 }

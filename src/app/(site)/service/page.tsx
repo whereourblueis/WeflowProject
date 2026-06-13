@@ -31,7 +31,7 @@ export default function ServicePage() {
           {AD_OPS_ITEMS.map((item) => (
             <div
               key={item}
-              className="flex items-center gap-2 rounded-xl border border-border bg-white px-4 py-4 text-sm font-medium text-gray-700 shadow-card"
+              className="flex items-center gap-2 rounded-xl border border-border bg-white px-4 py-6 text-sm font-medium text-gray-700 shadow-card"
             >
               <CheckCircle2 className="h-4 w-4 shrink-0 text-accent-600" />
               {item}

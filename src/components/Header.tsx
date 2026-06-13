@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -18,7 +19,8 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white/90 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-        <Link href="/" className="text-xl font-bold tracking-tight text-accent-600">
+        <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tight text-accent-600">
+          <Image src="/logo.png" alt="WEFLOW" width={32} height={32} className="h-8 w-8" />
           WEFLOW
         </Link>
 

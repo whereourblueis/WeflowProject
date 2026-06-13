@@ -4,7 +4,7 @@ import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { createReservation, type ReservationFormState } from "./actions";
 import { BUILD_TYPE_OPTIONS, generateTimeSlots } from "@/lib/data/forms";
-import { FieldLabel, inputClass } from "@/components/form/fields";
+import { FieldLabel, clearFormValidity, handleFormInvalid, inputClass } from "@/components/form/fields";
 
 const initialState: ReservationFormState = { status: "idle" };
 const TIME_SLOTS = generateTimeSlots();
@@ -55,7 +55,13 @@ export default function ReservationForm() {
   }
 
   return (
-    <form action={formAction} className="space-y-8">
+    <form
+      action={formAction}
+      onInvalidCapture={handleFormInvalid}
+      onInputCapture={clearFormValidity}
+      onChangeCapture={clearFormValidity}
+      className="space-y-8"
+    >
       <div>
         <FieldLabel required>날짜 선택</FieldLabel>
         <input
@@ -177,9 +183,6 @@ export default function ReservationForm() {
         개인정보 수집 및 상담 동의
       </label>
 
-      {!preferredTime && (
-        <p className="text-sm text-gray-400">시간대를 선택하거나 직접 입력해주세요.</p>
-      )}
       {state.status === "error" && (
         <p className="text-sm font-medium text-red-600">{state.message}</p>
       )}

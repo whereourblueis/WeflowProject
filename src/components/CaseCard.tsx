@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+import { caseImagePath } from "@/lib/data/cases";
 
 export default function CaseCard({
   industry,
@@ -10,10 +12,16 @@ export default function CaseCard({
   return (
     <Link
       href={href}
-      className="group block overflow-hidden rounded-xl border border-border bg-white shadow-card transition-shadow hover:shadow-card-hover"
+      className="group block overflow-hidden rounded-xl border border-border bg-white shadow-card transition-all hover:-translate-y-1 hover:border-2 hover:border-accent-600 hover:shadow-card-hover"
     >
-      <div className="flex aspect-[4/3] items-center justify-center bg-gradient-to-br from-accent-50 to-accent-100 px-4 text-center text-sm font-semibold text-accent-400">
-        {industry}
+      <div className="relative aspect-[4/3] overflow-hidden bg-accent-50">
+        <Image
+          src={caseImagePath(industry)}
+          alt={industry}
+          fill
+          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
+          className="object-cover"
+        />
       </div>
       <div className="p-3">
         <p className="text-sm font-semibold text-foreground">{industry}</p>

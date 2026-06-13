@@ -3,7 +3,7 @@
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { login, type LoginFormState } from "./actions";
-import { FieldLabel, inputClass } from "@/components/form/fields";
+import { FieldLabel, clearFormValidity, handleFormInvalid, inputClass } from "@/components/form/fields";
 
 const initialState: LoginFormState = { status: "idle" };
 
@@ -24,7 +24,13 @@ export default function LoginForm() {
   const [state, formAction] = useActionState(login, initialState);
 
   return (
-    <form action={formAction} className="space-y-5">
+    <form
+      action={formAction}
+      onInvalidCapture={handleFormInvalid}
+      onInputCapture={clearFormValidity}
+      onChangeCapture={clearFormValidity}
+      className="space-y-5"
+    >
       <div>
         <FieldLabel required>이메일</FieldLabel>
         <input
