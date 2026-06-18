@@ -68,9 +68,7 @@ export default function ServicePage() {
                 <div className="flex flex-col divide-y divide-border border-b border-border">
                   {col.items.map(({ icon: ItemIcon, label }) => (
                     <div key={label} className="flex items-center gap-3 px-5 py-4">
-                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-accent-50">
-                        <ItemIcon className="h-3.5 w-3.5 text-accent-600" />
-                      </span>
+                      <ItemIcon className="h-5 w-5 shrink-0 text-accent-600" />
                       <span className="text-sm font-medium text-foreground">{label}</span>
                     </div>
                   ))}
