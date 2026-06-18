@@ -25,7 +25,7 @@ export default function DiagnosisCTA() {
 
       <Link
         href="/diagnosis"
-        className="mt-8 inline-flex items-center gap-1 rounded-full bg-accent-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-600/30 transition-colors hover:bg-accent-700 sm:text-base"
+        className="cta-ring mt-8 inline-flex items-center gap-1 rounded-full bg-accent-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-700 sm:text-base"
       >
         무료진단 후 견적 받기
       </Link>

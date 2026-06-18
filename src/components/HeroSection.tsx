@@ -67,7 +67,7 @@ export default function HeroSection() {
             <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
               <Link
                 href="/diagnosis"
-                className="rounded-full bg-accent-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-600/30 transition-colors hover:bg-accent-700 sm:text-base"
+                className="badge-shimmer rounded-full px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-600/30 sm:text-base"
               >
                 무료 진단 신청
               </Link>
@@ -100,7 +100,7 @@ export default function HeroSection() {
           </div>
 
           <div className="animate-float relative hidden lg:block">
-            <Image src="/main_icon.png" alt="WEFLOW" fill className="object-contain" />
+            <Image src="/main_icon.png" alt="WEFLOW" fill priority sizes="420px" className="object-contain" />
           </div>
         </div>
       </div>

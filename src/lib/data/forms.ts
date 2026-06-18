@@ -5,7 +5,6 @@ export const BUILD_TYPE_OPTIONS = [
   "기타(WEFLOW 케어플랜)",
 ] as const;
 
-export type BuildType = (typeof BUILD_TYPE_OPTIONS)[number];
 
 /** 09:00 ~ 18:30, 30-minute intervals (20 slots) */
 export function generateTimeSlots(): string[] {

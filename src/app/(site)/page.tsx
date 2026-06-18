@@ -23,7 +23,9 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-16">
-        <h2 className="text-2xl font-bold text-foreground sm:text-3xl">성공사례</h2>
+        <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
+          성공사례
+        </h2>
         <div className="mt-8">
           <CasesPreview />
         </div>
@@ -32,7 +34,9 @@ export default function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-16">
         <div className="grid gap-8 lg:grid-cols-2">
           <div>
-            <h2 className="text-2xl font-bold text-foreground sm:text-3xl">제작 진행 과정</h2>
+            <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
+              제작 진행 과정
+            </h2>
             <div className="mt-6">
               <FunnelSteps />
             </div>
@@ -54,7 +58,9 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-6xl px-4 py-16">
         <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-2xl font-bold text-foreground sm:text-3xl">고객 후기</h2>
+          <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
+            고객 후기
+          </h2>
           <Link
             href="/diagnosis"
             className="inline-flex items-center gap-1 text-sm font-medium text-gray-500 hover:text-accent-600"

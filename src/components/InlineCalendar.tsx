@@ -7,16 +7,35 @@ interface InlineCalendarProps {
   value: string;
   min?: string;
   onChange: (value: string) => void;
+  className?: string;
 }
 
-const MONTH_NAMES = ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"];
-const DAY_NAMES = ["일","월","화","수","목","금","토"];
+const MONTH_NAMES = [
+  "1월",
+  "2월",
+  "3월",
+  "4월",
+  "5월",
+  "6월",
+  "7월",
+  "8월",
+  "9월",
+  "10월",
+  "11월",
+  "12월",
+];
+const DAY_NAMES = ["일", "월", "화", "수", "목", "금", "토"];
 
 function toDateStr(y: number, m: number, d: number) {
   return `${y}-${String(m + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
 }
 
-export default function InlineCalendar({ value, min, onChange }: InlineCalendarProps) {
+export default function InlineCalendar({
+  value,
+  min,
+  onChange,
+  className,
+}: InlineCalendarProps) {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
@@ -26,33 +45,52 @@ export default function InlineCalendar({ value, min, onChange }: InlineCalendarP
   const [viewYear, setViewYear] = useState(initYear);
   const [viewMonth, setViewMonth] = useState(initMonth);
 
-  const minDate = min ? (() => { const d = new Date(min); d.setHours(0,0,0,0); return d; })() : today;
+  const minDate = min
+    ? (() => {
+        const d = new Date(min);
+        d.setHours(0, 0, 0, 0);
+        return d;
+      })()
+    : today;
 
   const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
   const firstDayOfWeek = new Date(viewYear, viewMonth, 1).getDay();
 
   const prevMonth = () => {
-    if (viewMonth === 0) { setViewYear(y => y - 1); setViewMonth(11); }
-    else setViewMonth(m => m - 1);
+    if (viewMonth === 0) {
+      setViewYear((y) => y - 1);
+      setViewMonth(11);
+    } else setViewMonth((m) => m - 1);
   };
   const nextMonth = () => {
-    if (viewMonth === 11) { setViewYear(y => y + 1); setViewMonth(0); }
-    else setViewMonth(m => m + 1);
+    if (viewMonth === 11) {
+      setViewYear((y) => y + 1);
+      setViewMonth(0);
+    } else setViewMonth((m) => m + 1);
   };
 
-  const todayStr = toDateStr(today.getFullYear(), today.getMonth(), today.getDate());
+  const todayStr = toDateStr(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate(),
+  );
 
   const cells: (number | null)[] = [];
   for (let i = 0; i < firstDayOfWeek; i++) cells.push(null);
   for (let d = 1; d <= daysInMonth; d++) cells.push(d);
 
   return (
-    <div className="w-full rounded-2xl border border-border bg-white p-4 shadow-card sm:max-w-sm">
+    <div
+      className={
+        className ??
+        "w-full rounded-2xl border border-border bg-white p-4 shadow-card sm:max-w-sm"
+      }
+    >
       <div className="mb-4 flex items-center justify-between">
         <button
           type="button"
           onClick={prevMonth}
-          className="flex h-9 w-9 items-center justify-center rounded-full text-gray-500 transition-colors hover:bg-accent-50 hover:text-accent-600"
+          className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full text-gray-500 transition-colors hover:bg-accent-50 hover:text-accent-600"
         >
           <ChevronLeft className="h-5 w-5" />
         </button>
@@ -62,7 +100,7 @@ export default function InlineCalendar({ value, min, onChange }: InlineCalendarP
         <button
           type="button"
           onClick={nextMonth}
-          className="flex h-9 w-9 items-center justify-center rounded-full text-gray-500 transition-colors hover:bg-accent-50 hover:text-accent-600"
+          className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full text-gray-500 transition-colors hover:bg-accent-50 hover:text-accent-600"
         >
           <ChevronRight className="h-5 w-5" />
         </button>
@@ -72,8 +110,12 @@ export default function InlineCalendar({ value, min, onChange }: InlineCalendarP
         {DAY_NAMES.map((d, i) => (
           <div
             key={d}
-            className={`py-1 text-center text-xs font-semibold ${
-              i === 0 ? "text-red-400" : i === 6 ? "text-blue-400" : "text-gray-400"
+            className={`py-2 text-center text-xs font-semibold ${
+              i === 0
+                ? "text-red-400"
+                : i === 6
+                  ? "text-blue-400"
+                  : "text-gray-400"
             }`}
           >
             {d}
@@ -81,7 +123,7 @@ export default function InlineCalendar({ value, min, onChange }: InlineCalendarP
         ))}
       </div>
 
-      <div className="grid grid-cols-7 gap-y-1">
+      <div className="grid grid-cols-7 gap-y-3">
         {cells.map((day, i) => {
           if (day === null) return <div key={`e-${i}`} />;
 
@@ -100,17 +142,19 @@ export default function InlineCalendar({ value, min, onChange }: InlineCalendarP
               disabled={disabled}
               onClick={() => onChange(dateStr)}
               className={`mx-auto flex h-10 w-10 items-center justify-center rounded-full text-sm font-medium transition-colors ${
-                selected
-                  ? "bg-accent-600 text-white shadow-md"
-                  : disabled
+                disabled
                   ? "cursor-not-allowed text-gray-200"
-                  : isToday
-                  ? "border border-accent-400 text-accent-600 hover:bg-accent-50"
-                  : dayOfWeek === 0
-                  ? "text-red-500 hover:bg-red-50"
-                  : dayOfWeek === 6
-                  ? "text-blue-500 hover:bg-blue-50"
-                  : "text-gray-700 hover:bg-accent-50"
+                  : `cursor-pointer ${
+                      selected
+                        ? "bg-accent-600 text-white shadow-md"
+                        : isToday
+                          ? "border border-accent-400 text-accent-600 hover:bg-accent-50"
+                          : dayOfWeek === 0
+                            ? "text-red-500 hover:bg-red-50"
+                            : dayOfWeek === 6
+                              ? "text-blue-500 hover:bg-blue-50"
+                              : "text-gray-700 hover:bg-accent-50"
+                    }`
               }`}
             >
               {day}

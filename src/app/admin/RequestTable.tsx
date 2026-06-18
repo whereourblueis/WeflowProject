@@ -75,22 +75,22 @@ export default function RequestTable({
               return (
                 <Fragment key={row.id}>
                   <tr className="border-b border-gray-50 last:border-0">
-                    <td className="px-4 py-3">
+                    <td className="px-4 py-3 align-middle">
                       <span
                         className={`inline-block whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-semibold ${STATUS_STYLES[row.status]}`}
                       >
                         {row.status}
                       </span>
                     </td>
-                    <td className="px-4 py-3 font-medium text-gray-900">{row.name}</td>
-                    <td className="px-4 py-3 text-gray-600">{row.phone}</td>
-                    <td className="px-4 py-3 text-gray-500">{formatDateTime(row.created_at)}</td>
+                    <td className="px-4 py-3 align-middle font-medium text-gray-900">{row.name}</td>
+                    <td className="px-4 py-3 align-middle text-gray-600">{row.phone}</td>
+                    <td className="px-4 py-3 align-middle text-gray-500">{formatDateTime(row.created_at)}</td>
                     {showSchedule && (
-                      <td className="px-4 py-3 text-gray-500">
+                      <td className="px-4 py-3 align-middle text-gray-500">
                         {row.preferred_date} {row.preferred_time}
                       </td>
                     )}
-                    <td className="px-4 py-3">
+                    <td className="px-4 py-3 align-middle">
                       <div className="flex flex-wrap items-center gap-1.5">
                         <button
                           onClick={() => onStatusChange(row.id, "진행중")}
@@ -112,7 +112,7 @@ export default function RequestTable({
                         </button>
                       </div>
                     </td>
-                    <td className="px-4 py-3 text-right">
+                    <td className="px-4 py-3 align-middle text-right">
                       <button
                         onClick={() => setExpandedId(expanded ? null : row.id)}
                         className="cursor-pointer text-gray-400 transition-colors hover:text-gray-600"

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PenLine, Camera, AtSign, Megaphone, MapPin, TrendingUp, Globe, Map, Search } from "lucide-react";
 import ProcessSteps from "@/components/ProcessSteps";
 
 export const metadata: Metadata = {
@@ -7,19 +8,30 @@ export const metadata: Metadata = {
 
 const MARKETING_COLUMNS = [
   {
-    emoji: "✍️",
-    title: "콘텐츠 마케팅",
-    items: ["블로그 업로드", "인스타 업로드", "스레드 업로드"],
+    label: "콘텐츠",
+    icon: PenLine,
+    items: [
+      { icon: PenLine, label: "블로그 업로드" },
+      { icon: Camera,  label: "인스타 업로드" },
+      { icon: AtSign,  label: "스레드 업로드" },
+    ],
   },
   {
-    emoji: "🎯",
-    title: "키워드 타겟팅",
-    items: ["네이버 키워드 업로드", "당근플레이스 키워드 업로드"],
+    label: "광고",
+    icon: Megaphone,
+    items: [
+      { icon: Megaphone, label: "네이버 키워드 광고" },
+      { icon: MapPin,    label: "당근 플레이스 광고" },
+    ],
   },
   {
-    emoji: "🔍",
-    title: "SEO 최적화",
-    items: ["네이버 서치어드바이저 상단등록", "구글 콘솔 상단등록", "사이트맵 등록"],
+    label: "SEO",
+    icon: Search,
+    items: [
+      { icon: TrendingUp, label: "네이버 서치어드바이저" },
+      { icon: Globe,      label: "구글 서치 콘솔" },
+      { icon: Map,        label: "사이트맵 등록" },
+    ],
   },
 ];
 
@@ -42,21 +54,30 @@ export default function ServicePage() {
           제작 이후에도 세 가지 축으로 채널을 꾸준히 성장시켜 드립니다.
         </p>
 
-        <div className="mt-10 grid grid-cols-1 divide-y divide-border sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-          {MARKETING_COLUMNS.map((col) => (
-            <div key={col.title} className="py-8 sm:px-10 sm:py-0 first:sm:pl-0 last:sm:pr-0">
-              <p className="text-lg font-bold text-foreground">
-                {col.emoji} {col.title}
-              </p>
-              <ul className="mt-5 space-y-3">
-                {col.items.map((item) => (
-                  <li key={item} className="text-sm text-gray-500">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+        <div className="mt-10 grid gap-5 sm:grid-cols-3">
+          {MARKETING_COLUMNS.map((col) => {
+            const ColIcon = col.icon;
+            return (
+              <div key={col.label} className="flex flex-col rounded-2xl border border-border bg-white shadow-card">
+                <div className="flex items-center gap-3 border-b border-border px-5 py-4">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent-100">
+                    <ColIcon className="h-4 w-4 text-accent-600" />
+                  </span>
+                  <span className="text-base font-bold text-foreground">{col.label}</span>
+                </div>
+                <div className="flex flex-col divide-y divide-border border-b border-border">
+                  {col.items.map(({ icon: ItemIcon, label }) => (
+                    <div key={label} className="flex items-center gap-3 px-5 py-4">
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-accent-50">
+                        <ItemIcon className="h-3.5 w-3.5 text-accent-600" />
+                      </span>
+                      <span className="text-sm font-medium text-foreground">{label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
     </div>
