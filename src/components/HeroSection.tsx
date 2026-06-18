@@ -36,7 +36,7 @@ export default function HeroSection() {
     <section className="bg-gradient-to-b from-accent-50 to-background px-4 py-16 sm:py-24">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-8 lg:grid-cols-[1fr_420px]">
-          <div>
+          <div className="text-center lg:text-left">
             <p className="text-sm font-medium text-accent-700 sm:text-base">
               랜딩&홈페이지 제작 · 광고 운영 · 검색 상단 노출 · 맞춤형 웹 솔루션
             </p>
@@ -58,13 +58,13 @@ export default function HeroSection() {
               </span>
             </h1>
 
-            <p className="mt-5 max-w-md text-sm leading-relaxed text-gray-500 sm:text-base">
+            <p className="mx-auto mt-5 max-w-md text-sm leading-relaxed text-gray-500 sm:text-base lg:mx-0">
               홈페이지 제작부터 광고 연동·운영 관리까지
               <br />
               단순 제작이 아닌 문의 구조까지 설계합니다
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
               <Link
                 href="/diagnosis"
                 className="rounded-full bg-accent-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-600/30 transition-colors hover:bg-accent-700 sm:text-base"
@@ -85,7 +85,7 @@ export default function HeroSection() {
               </Link>
             </div>
 
-            <div className="mt-10 flex flex-wrap items-stretch gap-3">
+            <div className="mt-10 flex flex-wrap items-stretch justify-center gap-3 lg:justify-start">
               {HERO_BADGES.map(({ icon: Icon, title, desc }) => (
                 <div
                   key={title}

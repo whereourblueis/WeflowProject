@@ -1,9 +1,10 @@
-import { Check, Crown } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Check, Crown } from "lucide-react";
 import type { PricingCard } from "@/lib/data/pricing";
 
 export default function PricingCardGrid({ cards }: { cards: PricingCard[] }) {
   return (
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-6 pb-5 pt-8 sm:grid-cols-2 lg:grid-cols-3">
       {cards.map((card) => {
         const hoverBorderClass = card.title.includes("네이버")
           ? "hover:border-[#03C75A]"
@@ -11,25 +12,31 @@ export default function PricingCardGrid({ cards }: { cards: PricingCard[] }) {
           ? "hover:border-[#FF8A3D]"
           : "hover:border-accent-600";
 
+        const buttonClass = card.title.includes("네이버")
+          ? "border-[#03C75A] text-[#03C75A] hover:bg-[#03C75A] hover:text-white"
+          : card.title.includes("당근")
+          ? "border-[#FF8A3D] text-[#FF8A3D] hover:bg-[#FF8A3D] hover:text-white"
+          : "border-accent-600 text-accent-600 hover:bg-accent-600 hover:text-white";
+
         return (
           <div
             key={card.title}
-            className={`group relative flex flex-col overflow-hidden rounded-2xl border shadow-card transition-all hover:-translate-y-1 hover:shadow-card-hover ${hoverBorderClass} ${
+            className={`group relative flex flex-col rounded-2xl border transition-all hover:-translate-y-1 ${hoverBorderClass} ${
               card.featured
-                ? "border-accent-600 bg-gradient-to-b from-accent-50 to-white"
-                : "border-border bg-white"
+                ? "border-accent-500 bg-white shadow-xl shadow-accent-600/20 ring-1 ring-accent-400/40 lg:z-10 lg:scale-105"
+                : "border-border bg-white shadow-card hover:shadow-card-hover"
             }`}
           >
             {card.featured && (
-              <div className="bg-gradient-to-r from-accent-600 to-accent-500 px-6 py-3">
-                <div className="flex items-center gap-2">
-                  <Crown className="h-4 w-4 text-white transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110" />
-                  <span className="text-xs font-bold tracking-widest text-white/90">인기 추천</span>
-                </div>
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                <span className="badge-shimmer inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold text-white shadow-lg shadow-accent-600/40">
+                  <Crown className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110" />
+                  BEST
+                </span>
               </div>
             )}
 
-            <div className={`flex flex-1 flex-col p-6 ${card.featured ? "pt-5" : ""}`}>
+            <div className={`flex flex-1 flex-col p-6 ${card.featured ? "pt-8" : ""}`}>
               <h3 className={`text-lg font-bold ${card.featured ? "text-accent-700" : "text-foreground"}`}>
                 {card.title}
               </h3>
@@ -69,6 +76,19 @@ export default function PricingCardGrid({ cards }: { cards: PricingCard[] }) {
                 </p>
                 <p className="mt-1 text-xs text-gray-400">VAT포함</p>
               </div>
+
+              <Link
+                href="/reservation"
+                className={`mt-5 block rounded-full py-3 text-center text-sm font-semibold transition-colors ${
+                  card.featured
+                    ? "bg-accent-600 text-white shadow-lg shadow-accent-600/30 hover:bg-accent-700"
+                    : `border ${buttonClass}`
+                }`}
+              >
+                <span className="inline-flex items-center gap-1.5">
+                  신청하기 <ArrowRight className="h-4 w-4" />
+                </span>
+              </Link>
             </div>
           </div>
         );

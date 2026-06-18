@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { createPortal } from "react-dom";
 
 const NAV_ITEMS = [
   { href: "/", label: "홈" },
@@ -29,6 +30,15 @@ export default function Header() {
     };
 
   return (
+    <>
+    {open && createPortal(
+      <div
+        className="fixed inset-0 z-40"
+        aria-hidden="true"
+        onClick={() => setOpen(false)}
+      />,
+      document.body
+    )}
     <header className="sticky top-0 z-50 border-b border-border bg-white/90 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         <Link
@@ -74,12 +84,6 @@ export default function Header() {
       </div>
 
       {open && (
-        <>
-          <div
-            className="fixed inset-0 z-40"
-            aria-hidden="true"
-            onClick={() => setOpen(false)}
-          />
           <nav className="relative z-50 border-t border-border bg-white px-4 py-2 md:hidden">
             <ul className="flex flex-col gap-1 py-2 text-sm font-medium text-gray-700">
               {NAV_ITEMS.map((item) => (
@@ -98,8 +102,8 @@ export default function Header() {
               ))}
             </ul>
           </nav>
-        </>
       )}
     </header>
+    </>
   );
 }

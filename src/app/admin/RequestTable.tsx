@@ -91,7 +91,7 @@ export default function RequestTable({
                       </td>
                     )}
                     <td className="px-4 py-3">
-                      <div className="flex flex-wrap gap-1.5">
+                      <div className="flex flex-wrap items-center gap-1.5">
                         <button
                           onClick={() => onStatusChange(row.id, "진행중")}
                           className="cursor-pointer rounded-full border border-gray-200 px-2.5 py-1 text-xs font-medium text-gray-600 transition-colors hover:border-accent-600 hover:text-accent-600"
