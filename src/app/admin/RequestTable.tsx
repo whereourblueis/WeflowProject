@@ -77,7 +77,7 @@ export default function RequestTable({
                   <tr className="border-b border-gray-50 last:border-0">
                     <td className="px-4 py-3">
                       <span
-                        className={`rounded-full px-2.5 py-1 text-xs font-semibold ${STATUS_STYLES[row.status]}`}
+                        className={`inline-block whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-semibold ${STATUS_STYLES[row.status]}`}
                       >
                         {row.status}
                       </span>

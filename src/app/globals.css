@@ -23,6 +23,7 @@
     0 1px 2px 0 rgb(42 38 34 / 0.06), 0 1px 3px 0 rgb(42 38 34 / 0.08);
   --shadow-card-hover:
     0 4px 6px -1px rgb(42 38 34 / 0.08), 0 2px 4px -2px rgb(42 38 34 / 0.06);
+  --animate-float: logoFloat 3.5s ease-in-out infinite;
 }
 
 body {
@@ -55,4 +56,9 @@ body {
 
 .animate-marquee-reverse {
   animation: marquee-reverse 60s linear infinite;
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
 }

@@ -6,6 +6,7 @@ import { useFormStatus } from "react-dom";
 import { createReservation, type ReservationFormState } from "./actions";
 import { BUILD_TYPE_OPTIONS, generateTimeSlots } from "@/lib/data/forms";
 import { FieldLabel, clearFormValidity, handleFormInvalid, inputClass } from "@/components/form/fields";
+import InlineCalendar from "@/components/InlineCalendar";
 
 const initialState: ReservationFormState = { status: "idle" };
 const TIME_SLOTS = generateTimeSlots();
@@ -85,16 +86,21 @@ function ReservationFormFields({ onReset }: { onReset: () => void }) {
     >
       <div>
         <FieldLabel required>날짜 선택</FieldLabel>
-        <input
-          type="date"
-          min={today}
-          value={selectedDate}
-          onChange={(e) => {
-            setSelectedDate(e.target.value);
-            setSelectedTime(null);
-          }}
-          className={`${inputClass} sm:max-w-xs`}
-        />
+        <div className="mt-1.5">
+          <InlineCalendar
+            value={selectedDate}
+            min={today}
+            onChange={(date) => {
+              setSelectedDate(date);
+              setSelectedTime(null);
+            }}
+          />
+        </div>
+        {selectedDate && (
+          <p className="mt-2 text-sm font-medium text-accent-600">
+            선택됨: {selectedDate}
+          </p>
+        )}
       </div>
 
       <div>

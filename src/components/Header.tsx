@@ -74,24 +74,31 @@ export default function Header() {
       </div>
 
       {open && (
-        <nav className="border-t border-border bg-white px-4 py-2 md:hidden">
-          <ul className="flex flex-col gap-1 py-2 text-sm font-medium text-gray-700">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="block rounded-md px-2 py-2 hover:bg-accent-50 hover:text-accent-600"
-                  onClick={(e) => {
-                    setOpen(false);
-                    handleNavClick(item.href)(e);
-                  }}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <>
+          <div
+            className="fixed inset-0 z-40"
+            aria-hidden="true"
+            onClick={() => setOpen(false)}
+          />
+          <nav className="relative z-50 border-t border-border bg-white px-4 py-2 md:hidden">
+            <ul className="flex flex-col gap-1 py-2 text-sm font-medium text-gray-700">
+              {NAV_ITEMS.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="block rounded-md px-2 py-2 hover:bg-accent-50 hover:text-accent-600"
+                    onClick={(e) => {
+                      setOpen(false);
+                      handleNavClick(item.href)(e);
+                    }}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </>
       )}
     </header>
   );

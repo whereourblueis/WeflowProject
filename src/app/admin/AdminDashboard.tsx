@@ -136,10 +136,18 @@ export default function AdminDashboard({
           </button>
         </div>
 
+        {mobileMenuOpen && (
+          <div
+            className="fixed inset-0 z-40 xl:hidden"
+            aria-hidden="true"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+        )}
+
         <div
           className={`${
-            mobileMenuOpen ? "flex" : "hidden"
-          } flex-col gap-4 border-t border-gray-100 px-4 py-4 xl:flex xl:flex-1 xl:gap-8 xl:border-t-0 xl:px-0 xl:py-0`}
+            mobileMenuOpen ? "relative z-50 flex" : "hidden"
+          } flex-col gap-4 border-t border-gray-100 px-4 py-4 xl:flex xl:relative xl:z-auto xl:flex-1 xl:gap-8 xl:border-t-0 xl:px-0 xl:py-0`}
         >
           <nav className="flex gap-1.5 overflow-x-auto xl:flex-col xl:gap-1 xl:overflow-visible">
             {NAV_ITEMS.map((item) => (

@@ -12,7 +12,6 @@ function ReviewCard({ review }: { review: Review }) {
         {Array.from({ length: 5 }).map((_, i) => (
           <Star key={i} className="h-4 w-4 fill-current" />
         ))}
-        <span className="ml-1 text-xs font-medium text-gray-400">별다섯개!</span>
       </div>
       <p className="text-sm leading-relaxed text-gray-700">{review.comment}</p>
       <p className="text-xs font-medium text-gray-400">- OO {review.industry} 대표</p>
